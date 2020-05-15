@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>centos安装docker | My Blog</title>
+    <meta name="description" content="This is my blog">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="preload" href="/assets/css/0.styles.2a3dbd1b.css" as="style"><link rel="preload" href="/assets/js/app.86f53a6f.js" as="script"><link rel="preload" href="/assets/js/7.af705dcb.js" as="script"><link rel="preload" href="/assets/js/18.13ea8ca0.js" as="script"><link rel="prefetch" href="/assets/js/1.563b129a.js"><link rel="prefetch" href="/assets/js/10.14afbd6b.js"><link rel="prefetch" href="/assets/js/11.413f0097.js"><link rel="prefetch" href="/assets/js/12.b4385d0d.js"><link rel="prefetch" href="/assets/js/13.af4bfdd7.js"><link rel="prefetch" href="/assets/js/14.c9f1fff0.js"><link rel="prefetch" href="/assets/js/15.03dcebee.js"><link rel="prefetch" href="/assets/js/16.c65b8100.js"><link rel="prefetch" href="/assets/js/17.753b18b8.js"><link rel="prefetch" href="/assets/js/19.1c236fd6.js"><link rel="prefetch" href="/assets/js/20.1362b0a3.js"><link rel="prefetch" href="/assets/js/21.0e61e519.js"><link rel="prefetch" href="/assets/js/22.2d1b7a6a.js"><link rel="prefetch" href="/assets/js/23.7527b605.js"><link rel="prefetch" href="/assets/js/24.df3b52ff.js"><link rel="prefetch" href="/assets/js/25.a6d3b447.js"><link rel="prefetch" href="/assets/js/26.87a4b2f1.js"><link rel="prefetch" href="/assets/js/27.33b29f46.js"><link rel="prefetch" href="/assets/js/3.860c336f.js"><link rel="prefetch" href="/assets/js/4.c57905ef.js"><link rel="prefetch" href="/assets/js/5.bf3bd261.js"><link rel="prefetch" href="/assets/js/6.cdd1a741.js"><link rel="prefetch" href="/assets/js/8.92315160.js"><link rel="prefetch" href="/assets/js/9.17e1b471.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2a3dbd1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          My Blog
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          centos安装docker
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-04-04
+    </span> <!----></section> <section class="post-links" data-v-4e23451f><a href="/posts/2019/08/20/java%E8%A7%84%E8%8C%83-alibaba.html" class="post-link" data-v-4e23451f>
+      上一篇 : java规范手册_alibaba
+    </a> <a href="/posts/2020/04/10/%E4%BD%BF%E7%94%A8vscode-remote%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5linux%EF%BC%8C%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.html" class="post-link" data-v-4e23451f>
+      下一篇 : 使用vscode-remote远程连接Linux，并修改文件
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><p>使用docker,安装nginx服务器，并部署自己的小demo
+</p> <h3 id="_1-安装依赖包"><a href="#_1-安装依赖包" class="header-anchor">#</a> 1.安装依赖包</h3> <div class="language- extra-class"><pre class="language-text"><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/jryG12x4mDJwo8b.png" alt="1.jpg"></p> <h3 id="_2-设置阿里云镜像"><a href="#_2-设置阿里云镜像" class="header-anchor">#</a> 2.设置阿里云镜像</h3> <div class="language- extra-class"><pre class="language-text"><code>sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/3vcSI5EkyA9eUBb.png" alt="2.jpg"></p> <h3 id="_3-安装docker-ce"><a href="#_3-安装docker-ce" class="header-anchor">#</a> 3.安装docker-ce</h3> <div class="language- extra-class"><pre class="language-text"><code>sudo yum install docker-ce -y
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/47OFPsnkzQf8mYi.png" alt="3.jpg"></p> <h3 id="_4-启动docker-ce"><a href="#_4-启动docker-ce" class="header-anchor">#</a> 4.启动docker-ce</h3> <div class="language- extra-class"><pre class="language-text"><code>sudo systemctl enable docker
+sudo systemctl start docker
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/oCAXhH5c29gslkf.png" alt="4.jpg"> <img src="https://i.loli.net/2020/04/04/KpNdAUGEXtOPBkT.png" alt="5.jpg"></p> <h3 id="_5-查看docker版本"><a href="#_5-查看docker版本" class="header-anchor">#</a> 5.查看docker版本</h3> <div class="language- extra-class"><pre class="language-text"><code>docker version
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/7yNZgwFCJphHkqO.png" alt="6.jpg"></p> <h3 id="_6-搜索镜像"><a href="#_6-搜索镜像" class="header-anchor">#</a> 6.搜索镜像</h3> <div class="language- extra-class"><pre class="language-text"><code>docker search nginx
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/PDQdN9jqha85UV6.png" alt="7.jpg"></p> <h3 id="_7-拉取镜像"><a href="#_7-拉取镜像" class="header-anchor">#</a> 7.拉取镜像</h3> <div class="language- extra-class"><pre class="language-text"><code>docker pull nginx
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/5zWG2eNRiLrYZMy.png" alt="docker_pull_nginx.jpg"></p> <h3 id="_8-查看镜像"><a href="#_8-查看镜像" class="header-anchor">#</a> 8.查看镜像</h3> <div class="language- extra-class"><pre class="language-text"><code>docker images
+</code></pre></div><p><img src="https://i.loli.net/2020/04/04/aErW9Vbl78xsXzK.png" alt="docker_images.jpg"></p> <h3 id="_9-接下来就不截图了，和命令是一样的。"><a href="#_9-接下来就不截图了，和命令是一样的。" class="header-anchor">#</a> 9.接下来就不截图了，和命令是一样的。</h3> <div class="language- extra-class"><pre class="language-text"><code># 启动nginx容器,-p映射端口,-d守护式进程,将nginx容器的静态目录挂载到主机目录，方便修改，要确保主机确实有该目录和文件。目录： /opt/docker-nginx/html,文件：/opt/docker-nginx/nginx.conf
+docker run -p 80:80 -v /opt/docker-nginx/html:/usr/share/nginx/html -v /opt/docker-nginx/nginx.conf:/etc/nginx/nginx.conf -d nginx
+# 然后想修改静态界面，就去/opt/docker-nginx/html目录下更改，想修改配置文件，就去/opt/docker-nginx/nginx.conf修改就行了。
+</code></pre></div><h3 id="_10-界面展示"><a href="#_10-界面展示" class="header-anchor">#</a> 10.界面展示</h3> <p><img src="https://i.loli.net/2020/04/04/xOrWSQfjmFdHBXq.png" alt="10hours.png">
+网站地址：<a href="http://10hours.cn" target="_blank" rel="noopener noreferrer">10hours.cn<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+这是我调用printf520网站提供的接口，展示各个媒体的热榜。</p></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-04-04
+    </span> <!----></section> <section class="post-links" data-v-4e23451f><a href="/posts/2019/08/20/java%E8%A7%84%E8%8C%83-alibaba.html" class="post-link" data-v-4e23451f>
+      上一篇 : java规范手册_alibaba
+    </a> <a href="/posts/2020/04/10/%E4%BD%BF%E7%94%A8vscode-remote%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5linux%EF%BC%8C%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.html" class="post-link" data-v-4e23451f>
+      下一篇 : 使用vscode-remote远程连接Linux，并修改文件
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="https://i.loli.net/2020/01/13/6p2rDJSWQb3CfPL.png" alt="yang" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      yang
+    </section> <section class="info-desc" data-v-9d847660>谷雨春光晓，山川黛色青。</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="Hang'Zhou City, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>Hang'Zhou City, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          Hang'Zhou City, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:yangj33@qq.com" title="yangj33@qq.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>yangj33@qq.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          yangj33@qq.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/yangj339" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: yangj339" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: yangj339</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><!----> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2020/04/04/centos%E5%AE%89%E8%A3%85docker.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/yangj339" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: yangj339" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: yangj339</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <p class="footer-text" data-v-1375e54c><span data-v-1375e54c>Powered by </span> <a href="https://github.com/vuejs/vuepress" target="_blank" data-v-1375e54c>
+      VuePress
+    </a> <span data-v-1375e54c> | </span> <a href="https://github.com/meteorlxy/vuepress-theme-meteorlxy" target="_blank" data-v-1375e54c>
+        meteorlxy
+      </a></p> <p class="footer-text" data-v-1375e54c>Copyright 2019-present | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.86f53a6f.js" defer></script><script src="/assets/js/7.af705dcb.js" defer></script><script src="/assets/js/18.13ea8ca0.js" defer></script>
+  </body>
+</html>
